@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getTemplates, sendMessage } from '../api/gupshup';
+import { getTemplates, sendMessage } from '../../api/gupshup';
 
 const Chat = () => {
     const [templates, setTemplates] = useState([]);
@@ -21,7 +21,7 @@ const Chat = () => {
     const handleSend = async () => {
         try {
             await sendMessage(phoneNumber, selectedTemplate);
-            alert('Message sent successfully');
+            console.log('Message sent successfully');
         } catch (error) {
             console.error('Error sending message:', error);
             alert('Failed to send message');
@@ -33,16 +33,16 @@ const Chat = () => {
             <h1>Chat Application</h1>
             <div>
                 <label>Phone Number:</label>
-                <input 
-                    type="text" 
-                    value={phoneNumber} 
-                    onChange={(e) => setPhoneNumber(e.target.value)} 
+                <input
+                    type="text"
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
                 />
             </div>
             <div>
                 <label>Select Template:</label>
-                <select 
-                    value={selectedTemplate} 
+                <select
+                    value={selectedTemplate}
                     onChange={(e) => setSelectedTemplate(e.target.value)}
                 >
                     <option value="">Select a template</option>
